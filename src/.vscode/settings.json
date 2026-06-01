@@ -1,0 +1,24 @@
+{
+    "r.bracketedPaste": false,
+    "r.alwaysUseActiveTerminal": true,
+    "r.sessionWatcher": true,
+    "r.rterm.mac": "/Users/juliamayer/Library/Python/3.9/bin/radian",
+    "terminal.integrated.profiles.osx": {
+        "zsh": {
+            "path": "zsh",
+            "args": ["-l"]
+        },
+        "radian": {
+            "path": "/Users/juliamayer/Library/Python/3.9/bin/radian",
+            "icon": "graph"
+        }
+    },
+    "terminal.integrated.defaultProfile.osx": "radian",
+    "editor.rulers": [],
+    "r.source.focus": "terminal",
+    "r.rterm.option": ["--no-save", "--no-restore"],
+    "r.runSelection.selectRunAdvance": true,
+    "[r]": {
+        "editor.rulers": []
+    }
+}
