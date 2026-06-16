@@ -1,4 +1,4 @@
-# Vaccine efficacy, taken from Monoi et al
+# Vaccine efficacy, taken from Monoi et al (https://doi.org/10.1371/journal.pmed.1004625)
 
 #### libraries ####
 library(tidyverse)

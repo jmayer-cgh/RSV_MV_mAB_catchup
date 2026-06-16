@@ -1,4 +1,4 @@
-# mAB efficacy, taken from Monoi et al
+# mAB efficacy, taken from Monoi et al (https://doi.org/10.64898/2026.02.14.26346252)
 
 set.seed(1234)
 
