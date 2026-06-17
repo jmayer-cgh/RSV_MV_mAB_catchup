@@ -1,10 +1,11 @@
-**Effectiveness and efficiency of pre-season administration of long-acting monoclonal antibodies for infants born to RSV vaccinated mothers: a modelling study**
+# Effectiveness and efficiency of pre-season administration of long-acting monoclonal antibodies for infants born to RSV vaccinated mothers: a modelling study
 
 Julia Mayer, Ayaka Monoi, Fabienne Krauer, Kevin van Zandvoort, Beate Kampmann, Matthieu Domenech de Cellès, Stefan Flasche
 
 Code accompanying the manuscript "Effectiveness and efficiency of pre-season administration of long-acting monoclonal antibodies for infants born to RSV vaccinated mothers: a modelling study".
 
-# Structure of the code base:
+## Structure of the code base:
+### src folder
 The folder **src** contains the code used for the main analysis. It is made of 7 files.
 
 0. **Odin2 model** and **Simulation model** contain the catalytic MSR model used to estimate the proportion of seroconverted children <5 years, stratified by season of birth and age in months. They cannot be run on their own.
@@ -15,6 +16,7 @@ The folder **src** contains the code used for the main analysis. It is made of 7
 5. **Numerical outputs** calculates the numerical estimates presented in the paper from the *outputs*, as well as the numbers used to generate the graphical figures.
 6. **Plots** uses the the *numerical outputs* to produce the graphical figures presented in the paper.
 
+### Sensitivty analysis folder
 The **sensitivity analysis** folder contains the files used for the sensitivity analysis. We evaluated the following:
 1. Assume an exponential waning of naturally-derived maternal immunity: files **Main 1M** and **Odin2 model 1M**.
 2. Assume that the waning of naturally-derived maternal immunity follows an Erlang-3 distribution: files **Main 3M** and **Odin2 model 3M**.
