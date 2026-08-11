@@ -1402,7 +1402,6 @@ write.csv(nnv_icu, file = paste0(path_output, "NNV_icu.csv"), row.names = F)
 # We need to divide births into 12 age groups
 births_monthly <- births_de %>%
   select(season, total) %>%
-  mutate(total = total / 12) %>%
   # repeat each season 12 times to get monthly numbers
   slice(rep(1:n(), each = 12)) %>%
   group_by(season) %>%
@@ -1465,16 +1464,33 @@ incidence_outcome_monthly_int <- incidence_hosp_monthly %>%
   ))
 
 # Cumulative incidence by age group
-incidence_outcome_monthly_cum <- incidence_hosp_monthly %>%
+hosp_monthly_crude <- incidence_outcome_all_inter %>%
+  merge(births_monthly,
+        by.x = c("season_birth", "age_bracket"),
+        by.y = c("season", "age_months")
+  ) %>%
+  mutate(
+    incidence_crude = n_hospitalisations / total,
+    icu_crude = n_icu / total,
+    age_bracket = as.numeric(age_bracket)
+  )
+
+incidence_outcome_monthly_cum <- hosp_monthly_crude %>%
   arrange(intervention, season_birth, age_bracket, iter) %>%
   group_by(intervention, season_birth, iter) %>%
   mutate(
-    cum_incidence_per_100000 = cumsum(incidence_per_100000),
-    cum_icu_per_100000 = cumsum(icu_per_100000)
+    cum_incidence_crude = cumsum(incidence_crude),
+    cum_icu_crude = cumsum(icu_crude)
   ) %>%
   ungroup()
 
-incidence_outcome_monthly_cum_int <- incidence_outcome_monthly_cum %>%
+incidence_outcome_monthly_cum_per_100000 <- incidence_outcome_monthly_cum %>%
+  mutate(
+    cum_incidence_per_100000 = cum_incidence_crude * 100000,
+    cum_icu_per_100000 = cum_icu_crude * 100000
+  )
+
+incidence_outcome_monthly_cum_int <- incidence_outcome_monthly_cum_per_100000 %>%
   group_by(intervention, season_birth, age_bracket) %>%
   summarise(
     cum_incidence_up_95 = quantile(cum_incidence_per_100000, 0.025, na.rm = T),
