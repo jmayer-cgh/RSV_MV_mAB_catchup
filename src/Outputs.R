@@ -755,7 +755,7 @@ for (i in 1:100) {
                                                              icu_age_season_de, 
                                                              VE_distribution, 
                                                              IE_distribution, 
-                                                             admin_age = 11, 
+                                                             admin_age = 0, 
                                                              season = "winter") %>%
     mutate(intervention = "+ mAB for winter births")
   
